@@ -63,7 +63,7 @@ RCT_REMAP_METHOD(data,
         __block NSItemProvider *urlProvider = nil;
         __block NSItemProvider *textProvider = nil;
 
-        for (NSExtensionItem *item in self.extensionContext.inputItems){
+        for (NSExtensionItem *item in context.inputItems){
             NSArray *attachments = item.attachments;
             
             [attachments enumerateObjectsUsingBlock:^(NSItemProvider *provider, NSUInteger idx, BOOL *stop) {
