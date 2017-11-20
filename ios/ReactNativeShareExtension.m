@@ -67,7 +67,7 @@ RCT_REMAP_METHOD(data,
             NSArray *attachments = item.attachments;
             
             [attachments enumerateObjectsUsingBlock:^(NSItemProvider *provider, NSUInteger idx, BOOL *stop) {
-                if([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeURL]) {
+                if([provider hasItemConformingToTypeIdentifier:URL_IDENTIFIER]) {
                     urlProvider = provider;
                     *stop = YES;
                 } else if ([provider hasItemConformingToTypeIdentifier:TEXT_IDENTIFIER]){
@@ -78,7 +78,7 @@ RCT_REMAP_METHOD(data,
         }
 
         if(urlProvider) {
-            [urlProvider loadItemForTypeIdentifier:(NSString *)kUTTypeURL options:nil completionHandler:^(id<NSSecureCoding> item, NSError *error) {
+            [urlProvider loadItemForTypeIdentifier:URL_IDENTIFIER options:nil completionHandler:^(id<NSSecureCoding> item, NSError *error) {
                 NSURL *url = (NSURL *)item;
 
                 if(callback) {
